@@ -1,15 +1,15 @@
-tokenvlue.py
-
-# Sample token
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-
-def get_value_from_token(token: str, key: str):
-    try:
-        payload = jwt.decode(token, options={"verify_signature": False})
-        return payload.get(key)
-    except jwt.JWTError as e:
-        print(f"Error decoding token: {e}")
-        return None
-
-token_value = get_value_from_token(token, "sub")
-print("Value:", token_value)
+<form action="/submit-form" method="post" onsubmit="setToken()">
+  <!-- Other form elements here -->
+  <input type="text" id="tokenInput" readonly>
+  <input type="submit" value="Submit Form">
+  <script>
+    function setToken() {
+      // Set the token value to a random number
+      const token = Math.floor(Math.random() * 100000);
+      // Set the value of the input field
+      document.getElementById("tokenInput").value = token;
+      // Set the hidden input field's value for server-side processing
+      document.querySelector('[name="token"]').value = token;
+    }
+  </script>
+</form>
